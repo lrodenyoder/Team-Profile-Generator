@@ -9,7 +9,13 @@ test("creates employee object", () => {
 });
 
 test('gets employee name', () => {
-  const employee = new Employee("Dave", "0", "dave@gmail.com");
+    const employee = new Employee("Dave", "0", "dave@gmail.com");
 
     expect(employee.getName()).toEqual(expect.stringContaining(employee.name.toString()));
-})
+});
+
+test('gets employee id', () => {
+    const employee = new Employee("Dave", "0", "dave@gmail.com");
+
+    expect(employee.getId()).toEqual(expect.any(Number));
+});
