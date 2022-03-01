@@ -9,3 +9,9 @@ test('create engineer object', () => {
 
     expect(engineer.github).toBe('git user');
 });
+
+test('get engineer role', () => {
+    const engineer = new Engineer("Dave", "0", "dave@gmail.com", "24", "git user");
+    
+    expect(engineer.getRole()).toBe('Engineer');
+});
