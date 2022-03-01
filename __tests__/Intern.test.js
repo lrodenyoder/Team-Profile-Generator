@@ -15,3 +15,11 @@ test("get intern role", () => {
 
   expect(intern.getRole()).toBe("Intern");
 });
+
+test('get intern screen name', () => {
+    const intern = new Intern("Dave", "0", "dave@gmail.com", "school");
+
+    expect(intern.getSchool()).toEqual(
+        expect.stringContaining(intern.school.toString())
+    ); 
+});
