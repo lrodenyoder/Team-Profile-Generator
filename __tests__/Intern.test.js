@@ -1,13 +1,13 @@
-const Intern = require('../lib/Intern.js');
+const Intern = require("../lib/Intern.js");
 
-test('create intern object', () => {
-    const intern = new Intern("Dave", "0", "dave@gmail.com", "school");
+test("create intern object", () => {
+  const intern = new Intern("Dave", "0", "dave@gmail.com", "school");
 
-    expect(intern.name).toBe("Dave");
-    expect(intern.id).toEqual(expect.any(Number));
-    expect(intern.email).toBe("dave@gmail.com");
+  expect(intern.name).toBe("Dave");
+  expect(intern.id).toEqual(expect.any(Number));
+  expect(intern.email).toBe("dave@gmail.com");
 
-    expect(intern.school).toBe('school');
+  expect(intern.school).toBe("school");
 });
 
 test("get intern role", () => {
@@ -16,10 +16,10 @@ test("get intern role", () => {
   expect(intern.getRole()).toBe("Intern");
 });
 
-test('get intern screen name', () => {
-    const intern = new Intern("Dave", "0", "dave@gmail.com", "school");
+test("get intern screen name", () => {
+  const intern = new Intern("Dave", "0", "dave@gmail.com", "school");
 
-    expect(intern.getSchool()).toEqual(
-        expect.stringContaining(intern.school.toString())
-    ); 
+  expect(intern.getSchool()).toEqual(
+    expect.stringContaining(intern.school.toString())
+  );
 });

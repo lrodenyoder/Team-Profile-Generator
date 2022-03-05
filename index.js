@@ -1,6 +1,5 @@
 //VARIABLES
 const Prompt = require('./lib/Prompt');
-//const Manager = require('./lib/Manager');
 const fs = require("fs");
 const generateHTML = require('./src/generateHTML.js');
 
@@ -54,22 +53,3 @@ new Prompt()
   .catch((err) => {
     console.log(err);
   });
-
-
-
-//call to initialize app
-// promptManager()
-//     .then(promptEmployee)
-//     .then((data) => {
-//         console.log(data);
-//         return generateHTML(data);
-//     })
-//     // .then((htmlData) => {
-//     //     return writeToFile(htmlData);
-//     // })
-//     // .then((writeFileResponse) => {
-//     //     console.log(writeFileResponse);
-//     // })
-    // .catch((err) => {
-    //     console.error(err);
-    // });
