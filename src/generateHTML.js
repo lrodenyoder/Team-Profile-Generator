@@ -3,8 +3,7 @@ const Manager = require("../lib/Manager.js");
 const Engineer = require("../lib/Engineer.js");
 const Intern = require("../lib/Intern.js");
 
-function generateManager(managerData) {
-  console.log(managerData);
+const generateManager = managerData =>{
   return `<div class="card">
             <h1 class="card-header">
                 ${managerData.getName()} <br>
@@ -12,21 +11,57 @@ function generateManager(managerData) {
             </h1>
             <div class="card-body">
                 <p class="card-text">ID: ${managerData.getId()}</p>
-                <p class="card-text">EMAIL: ${managerData.getEmail()}</p>
-                <p class="card-text">OFFICE#: ${managerData.officeNumber}</p>
+                <p class="card-text">Email: ${managerData.getEmail()}</p>
+                <p class="card-text">Office Number: ${managerData.officeNumber}</p>
             </div>
         </div>`;
+};
+
+const generateEmployees = employeeData => {
+    console.log(employeeData);
+
+    return `
+    ${employeeData.filter(({ github }) => github)
+        .map(({ employeeType, name, id, email, github }) => {
+    return `<div class="card">
+            <h1 class="card-header">
+                ${name}<br>
+                <i class="bi bi-display"></i> ${employeeType}
+            </h1>
+            <div class="card-body">
+                <p class="card-text">ID: ${id}</p>
+                <p class="card-text">Email: ${email}</p>
+                <p class="card-text">GitHub: ${github}</p>
+            </div>
+        </div>
+    `
+        })}
+    ${employeeData.filter(({ school }) => school)
+        .map(({ employeeType, name, id, email, school }) => {
+    return `<div class="card">
+            <h1 class="card-header">
+                ${name}<br>
+                <i class="bi bi-mortarboard"></i> ${employeeType}
+            </h1>
+            <div class="card-body">
+                <p class="card-text">ID: ${id}</p>
+                <p class="card-text">Email: ${email}</p>
+                <p class="card-text">School: ${school}</p>
+            </div>
+        </div>
+    `
+        })}
+
+`
 }
 
 function generateHTML(answers) {
-  console.log(answers);
-  const { name, id, email, officeNumber, ...employees } = answers;
-  //console.log(name, id, email);
-  let manager = new Manager(name, id, email, officeNumber);
-  let employee1 = new Engineer(name, id, email);
-  //console.log(employee1.name)
-  //console.log(manager1);
-  //console.log(manager1.getEmail());
+  //console.log(answers);
+  const { name, id, email, officeNumber, ...employeesObject } = answers;
+    let manager = new Manager(name, id, email, officeNumber);
+    //extracts employee array from answers object
+  let employeeArray = employeesObject.employees;
+
   return `<!DOCTYPE html>
 <html lang="en">
 
@@ -48,34 +83,12 @@ function generateHTML(answers) {
 
         <main class="card-deck">
         ${generateManager(manager)}
-        
-        <div class="card">
-            <h1 class="card-header">
-                NAME<br>
-                <i class="bi bi-display"></i> ENGINEER
-            </h1>
-            <div class="card-body">
-                <p class="card-text">ID:</p>
-                <p class="card-text">EMAIL:</p>
-                <p class="card-text">OFFICE#:</p>
-            </div>
-        </div>
-        <div class="card">
-            <h1 class="card-header">
-                NAME<br>
-                <i class="bi bi-mortarboard"></i> INTERN
-            </h1>
-            <div class="card-body">
-                <p class="card-text">ID:</p>
-                <p class="card-text">EMAIL:</p>
-                <p class="card-text">OFFICE#:</p>
-            </div>
-        </div>
+        ${generateEmployees(employeeArray)}
     </main>
 
 </body>
 
 </html>`;
-}
+};
 
 module.exports = generateHTML;

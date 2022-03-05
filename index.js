@@ -22,7 +22,7 @@ const writeToFile = (data) => {
 
 //call to initialize app
 new Prompt().promptManager()
-  //.then(new Prompt().promptEmployee)
+  .then(new Prompt().promptEmployee)
     .then((answers) => {
         //console.log(answers, typeof answers);
         // const { name, id, email } = answers;
@@ -32,7 +32,7 @@ new Prompt().promptManager()
         return generateHTML(answers)
     })
     .then((htmlData) => {
-        console.log(htmlData)
+        //console.log(htmlData)
        return writeToFile(htmlData);
     });
 

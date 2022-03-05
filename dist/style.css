@@ -21,6 +21,11 @@
     color: white;
     font-size: 20px;
     line-height: 1.7;
+    text-align: center;
+}
+
+.card-body {
+    text-align: center;
 }
 
     
