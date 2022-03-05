@@ -20,22 +20,40 @@ const writeToFile = (data) => {
   });
 };
 
-//call to initialize app
-new Prompt().promptManager()
-  .then(new Prompt().promptEmployee)
-    .then((answers) => {
-        //console.log(answers, typeof answers);
-        // const { name, id, email } = answers;
-        // console.log(name, id, email);
-        // let manager1 = new Manager(name, id, email);
-        // console.log(manager1)
-        return generateHTML(answers)
-    })
-    .then((htmlData) => {
-        //console.log(htmlData)
-       return writeToFile(htmlData);
-    });
+const copyFile = () => {
+  return new Promise((resolve, reject) => {
+    fs.copyFile("./src/style.css", "./dist/style.css", (err) => {
+      if (err) {
+        reject(err);
+        return;
+      }
 
+      resolve({
+        ok: true,
+        message: "File Copied!",
+      });
+    });
+  });
+};
+
+
+//call to initialize app
+new Prompt()
+  .promptManager()
+  .then(new Prompt().promptEmployee)
+  .then((answers) => {
+    return generateHTML(answers);
+  })
+  .then((htmlData) => {
+    //console.log(htmlData)
+    return writeToFile(htmlData);
+  })
+  .then(writeFileResponse => {
+    return copyFile();
+  })
+  .catch((err) => {
+    console.log(err);
+  });
 
 
 
@@ -52,6 +70,6 @@ new Prompt().promptManager()
 //     // .then((writeFileResponse) => {
 //     //     console.log(writeFileResponse);
 //     // })
-//     .catch((err) => {
-//         console.error(err);
-//     });
+    // .catch((err) => {
+    //     console.error(err);
+    // });
