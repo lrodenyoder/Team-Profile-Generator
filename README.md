@@ -44,7 +44,15 @@ Before the generator can be used, a `dist` folder must be created in the root di
 To initialize the generator, run the following command
 
     node index.js
-   
+
+
+## Sample Finished File
+----------------------------
+
+<p>
+<img src='./READMEimage.jpg' alt='Team Website Screenshot'>
+</p>
+
  ## License
 
   -----------------------
