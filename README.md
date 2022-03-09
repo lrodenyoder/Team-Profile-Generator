@@ -14,7 +14,7 @@
 
   This project uses Node.js in order to generate a formatted HTML file based on user input. Using this generator allows for a team manager to quickly create a webpage with their team's information. Jest was used to facilitate test driven and object oriented development.
 
-  [Click Here]() for a video walkthrough on how to use this generator.
+  [Click Here](https://drive.google.com/file/d/1LDCIdH4t_hezZp_Nhln1go7semvwRjId/view) for a video walkthrough on how to use this generator.
 
 
   ## Installation
